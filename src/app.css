@@ -1,0 +1,47 @@
+:root {
+    --transition-color: 300ms ease;
+    --transition-transform: 400ms ease-out;
+    --blur: 30px;
+    --font-main: "Cascadia Code", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+body {
+    font-family: var(--font-main);
+}
+
+:root[data-theme="gold"] {
+    --color-surface: rgba(255, 150, 0, 0.1);
+    --color-surface-hover: rgba(255, 150, 0, 0.2);
+    --color-border: rgba(255, 150, 0, 0.2);
+    --color-text: white;
+}
+
+:root[data-theme="dark"] {
+    --color-surface: rgba(35, 35, 35, 0.15);
+    --color-surface-hover: rgba(35, 35, 35, 0.3);
+    --color-border: rgba(35, 35, 35, 1);
+    --color-text: white;
+}
+
+.glass {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  transition: background-color var(--transition-color), border-color var(--transition-color);
+}
+
+.glass.hoverable:hover {
+  background: var(--color-surface-hover);
+}
+
+.glass-blur {
+  backdrop-filter: blur(var(--blur));
+  -webkit-backdrop-filter: blur(var(--blur));
+}
+
+@keyframes spin {
+  0%   { transform: rotate(0deg)   scale(1); }
+  50%  { transform: rotate(180deg) scale(0.7); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+.spin { animation: spin 300ms ease forwards; }
