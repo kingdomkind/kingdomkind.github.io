@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages
+name: Deploy SvelteKit to GitHub Pages
 
 on:
   push:
@@ -10,12 +10,8 @@ permissions:
   id-token: write
 
 concurrency:
-  group: pages
+  group: github-pages
   cancel-in-progress: true
-
-env:
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
-  GITHUB_PAGES: true
 
 jobs:
   build:
@@ -25,18 +21,18 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v5
 
-      - name: Setup Bun
+      - name: Install Bun
         uses: oven-sh/setup-bun@v2
         with:
           bun-version: latest
 
       - name: Install dependencies
-        run: bun install
+        run: bun install --frozen-lockfile
 
-      - name: Build SvelteKit site
+      - name: Build site
         run: bun run build
 
-      - name: Upload artifact
+      - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: build
