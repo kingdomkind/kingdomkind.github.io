@@ -37,7 +37,7 @@
             icon: "simple-icons:discord",
             label: "Discord",
             href: null,
-            username: "@kingdom.kind",
+            username: "@_kingdomkind",
             copyOnClick: true,
         },
     ];
