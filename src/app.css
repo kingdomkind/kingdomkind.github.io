@@ -1,0 +1,66 @@
+:root {
+    --transition-color: 500ms ease;
+    --transition-transform: 400ms ease-out;
+    --transition-border-radius: 400ms ease;
+    --blur: 30px;
+    --border-radius: 16px;
+    --border-radius-hover: 32px;
+    --border-width: 1px;
+    --font-main:
+        "Cascadia Code", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: #1a1a1a;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.glass {
+    background-color: var(--color-surface);
+    border: var(--border-width) solid var(--color-border);
+    color: var(--color-text);
+    backdrop-filter: blur(var(--blur));
+    border-radius: var(--border-radius);
+    transition:
+        background-color var(--transition-color),
+        border-color var(--transition-color),
+        border-radius var(--transition-border-radius);
+}
+
+.glass-hover:hover {
+    background-color: var(--color-surface-hover);
+}
+
+:root[data-theme="gold"] {
+    --color-surface: rgba(255, 150, 0, 0.1);
+    --color-surface-hover: rgba(255, 150, 0, 0.2);
+    --color-border: rgba(255, 150, 0, 0.8);
+    --color-tooltip: rgba(0, 0, 0, 0.8);
+    --color-text: white;
+}
+
+:root[data-theme="dark"] {
+    --color-surface: rgba(35, 35, 35, 0.15);
+    --color-surface-hover: rgba(120, 120, 120, 0.25);
+    --color-border: rgba(35, 35, 35, 1);
+    --color-tooltip: rgba(0, 0, 0, 0.8);
+    --color-text: white;
+}
+
+.spin {
+    animation: spin 300ms ease forwards;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg) scale(1);
+    }
+    50% {
+        transform: rotate(180deg) scale(0.7);
+    }
+    100% {
+        transform: rotate(360deg) scale(1);
+    }
+}
